@@ -411,12 +411,35 @@ class CursorInstallerGUI:
                                   capture_output=True, text=True)
 
             if result.returncode != 0:
+                self.log_message(f"appimage2deb stderr: {result.stderr}")
+                self.log_message(f"appimage2deb stdout: {result.stdout}")
                 raise Exception(f"Failed to convert AppImage: {result.stderr}")
 
-            # Find and install the DEB file
-            deb_files = [f for f in os.listdir(".") if f.startswith("cursor-") and f.endswith(".deb")]
+            # List all files in directory to debug
+            self.log_message("Files in directory after conversion:")
+            for file in os.listdir("."):
+                self.log_message(f"  - {file}")
+
+            # Find and install the DEB file with improved pattern matching
+            deb_files = []
+            for file in os.listdir("."):
+                if file.endswith(".deb"):
+                    # Check if it's a cursor-related package
+                    if any(keyword in file.lower() for keyword in ["cursor", "cursor-ai", "cursor-editor"]):
+                        deb_files.append(file)
+                        self.log_message(f"Found DEB file: {file}")
+
+            # If no cursor-specific DEB found, look for any DEB file
             if not deb_files:
-                raise Exception("No DEB file found after conversion")
+                deb_files = [f for f in os.listdir(".") if f.endswith(".deb")]
+                self.log_message(f"Found {len(deb_files)} DEB file(s): {deb_files}")
+
+            if not deb_files:
+                # List all files again for debugging
+                self.log_message("No DEB files found. All files in directory:")
+                for file in sorted(os.listdir(".")):
+                    self.log_message(f"  - {file}")
+                raise Exception("No DEB file found after conversion. Check the log for details.")
 
             deb_file = deb_files[0]
             self.log_message(f"Installing {deb_file}...")
@@ -424,12 +447,23 @@ class CursorInstallerGUI:
                                   capture_output=True, text=True)
 
             if result.returncode != 0:
+                self.log_message(f"dpkg stderr: {result.stderr}")
+                self.log_message(f"dpkg stdout: {result.stdout}")
                 raise Exception(f"Failed to install DEB: {result.stderr}")
 
             # Cleanup
             self.log_message("Cleaning up temporary files...")
-            os.remove(appimage_file)
-            os.remove(deb_file)
+            try:
+                os.remove(appimage_file)
+                self.log_message(f"Removed AppImage: {appimage_file}")
+            except Exception as e:
+                self.log_message(f"Warning: Could not remove AppImage: {e}")
+
+            try:
+                os.remove(deb_file)
+                self.log_message(f"Removed DEB: {deb_file}")
+            except Exception as e:
+                self.log_message(f"Warning: Could not remove DEB: {e}")
 
             self.log_message("✓ Cursor installation completed successfully!")
             self.install_status.set("Installation completed successfully!")
