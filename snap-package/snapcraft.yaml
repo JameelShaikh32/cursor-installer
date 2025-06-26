@@ -1,0 +1,81 @@
+name: cursor-installer-gui
+version: "1.0.0"
+summary: Cursor AI Editor GUI installer for Ubuntu
+description: |
+  An automated GUI installer for Cursor AI Editor on Ubuntu systems (versions lower than 24).
+  Converts Cursor AppImage to a proper .deb package and installs it system-wide.
+
+  Features:
+  - Automatic AppImage to DEB conversion using appimage2deb
+  - Dependency management (installs libfuse2 and appimage2deb)
+  - Clean installation process (removes existing dpkg packages)
+  - Automatic cleanup of temporary files
+  - User-friendly GUI interface with progress tracking
+  - Dependency checking and automatic installation
+
+  Perfect for developers struggling with Cursor AppImage files on Ubuntu!
+
+grade: stable
+confinement: classic
+base: core22
+
+# Store-specific metadata
+title: Cursor Installer
+license: MIT
+website: https://github.com/jameelshaikh/cursor-installer
+source-code: https://github.com/jameelshaikh/cursor-installer
+issues: https://github.com/jameelshaikh/cursor-installer/issues
+
+# Store categories
+categories:
+  - development
+  - ide
+  - utility
+
+# Store keywords for better discoverability
+keywords:
+  - cursor
+  - editor
+  - installer
+  - ai
+  - ubuntu
+  - appimage
+  - development
+  - gui
+
+# Store screenshots (you'll need to add these later)
+# screenshots:
+#   - url: https://raw.githubusercontent.com/jameelshaikh/cursor-installer/main/screenshots/main.png
+#     alt: Main installer interface
+#   - url: https://raw.githubusercontent.com/jameelshaikh/cursor-installer/main/screenshots/progress.png
+#     alt: Installation progress
+#   - url: https://raw.githubusercontent.com/jameelshaikh/cursor-installer/main/screenshots/success.png
+#     alt: Installation completed successfully
+
+# Store icon
+icon: cursor-installer.svg
+
+apps:
+  cursor-installer-gui:
+    command: cursor-installer-gui
+    plugs:
+      - home
+      - network
+      - network-bind
+      - removable-media
+      - system-files
+    environment:
+      PATH: $SNAP/usr/sbin:$SNAP/usr/bin:$SNAP/sbin:$SNAP/bin:$PATH
+    desktop: cursor-installer-gui.desktop
+
+parts:
+  cursor-installer-gui:
+    source: .
+    plugin: dump
+    organize:
+      cursor_installer_gui.py: usr/bin/cursor-installer-gui
+      cursor-installer-gui.desktop: usr/share/applications/cursor-installer-gui.desktop
+      cursor-installer.svg: usr/share/icons/hicolor/scalable/apps/cursor-installer.svg
+    override-build: |
+      snapcraftctl build
+      chmod +x $SNAPCRAFT_PART_INSTALL/usr/bin/cursor-installer-gui

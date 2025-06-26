@@ -1,0 +1,18 @@
+Package: cursor-installer-gui
+Version: 1.0.0
+Architecture: all
+Maintainer: Jameel Shaikh <shaikhjameel17@gmail.com>
+Depends: python3 (>= 3.8), python3-tk, bash, snapd, libfuse2
+Priority: optional
+Section: devel
+Description: Cursor AI Editor GUI installer for Ubuntu (versions < 24)
+ This package provides a GUI installer for Cursor AI Editor
+ on Ubuntu systems (versions lower than 24). It converts the Cursor
+ AppImage to a proper .deb package and installs it system-wide.
+ .
+ Features:
+  * Automatic AppImage to DEB conversion using appimage2deb
+  * Dependency management (installs libfuse2 and appimage2deb)
+  * Clean installation process (removes existing dpkg packages)
+  * Automatic cleanup of temporary files
+  * User-friendly GUI interface with progress tracking

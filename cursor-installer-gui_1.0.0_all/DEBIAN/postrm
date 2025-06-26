@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+# Update desktop database
+update-desktop-database /usr/share/applications
+
+# Remove symlink
+rm -f /usr/bin/cursor-installer-gui
+
+exit 0

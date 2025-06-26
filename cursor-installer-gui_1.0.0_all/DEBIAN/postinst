@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+
+# Update desktop database
+update-desktop-database /usr/share/applications
+
+# Make script executable
+chmod +x /usr/local/bin/cursor-installer-gui
+
+# Create symlink for easier access
+ln -sf /usr/local/bin/cursor-installer-gui /usr/bin/cursor-installer-gui
+
+exit 0
