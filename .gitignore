@@ -21,13 +21,6 @@ wheels/
 *.egg
 MANIFEST
 
-# Snap build artifacts
-*.snap
-.snapcraft/
-prime/
-stage/
-parts/
-
 # DEB build artifacts
 *.deb
 *.buildinfo
@@ -35,6 +28,10 @@ parts/
 *.dsc
 *.tar.gz
 *.tar.xz
+
+# Release artifacts
+release-v*/
+cursor-installer-v*.zip
 
 # Temporary files
 *.tmp
@@ -75,3 +72,6 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+# Release artifacts
+release-v*/
+cursor-installer-v*.zip

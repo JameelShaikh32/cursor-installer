@@ -11,6 +11,7 @@ A simple and automated installer script for Cursor AI Editor on Ubuntu systems (
 - **User-friendly** - prompts for AppImage file location with smart defaults
 - **Graphical Interface** - modern GUI application with progress tracking
 - **Command-line Interface** - script-based installation for automation
+- **Custom Icons** - dedicated icons for CLI and GUI versions
 
 ## 📦 Installing the Installer
 
@@ -18,11 +19,32 @@ You can install this installer script as a proper application in Ubuntu using se
 
 ### Method 1: Install as .deb Package (Recommended)
 
-1. **Build the .deb package:**
+#### GUI Version (Recommended for beginners)
+
+1. **Download the GUI .deb package:**
 
    ```bash
-   chmod +x create_gui_deb_package.sh
-   ./create_gui_deb_package.sh
+   wget https://github.com/JameelShaikh32/cursor-installer/releases/download/v1.0.0/cursor-installer-gui_1.0.0_all.deb
+   ```
+
+2. **Install the package:**
+
+   ```bash
+   sudo dpkg -i cursor-installer-gui_1.0.0_all.deb
+   sudo apt-get install -f  # Fix any dependency issues
+   ```
+
+3. **Launch from Applications menu** or terminal:
+   ```bash
+   cursor-installer-gui
+   ```
+
+#### CLI Version (For advanced users)
+
+1. **Download the CLI .deb package:**
+
+   ```bash
+   wget https://github.com/JameelShaikh32/cursor-installer/releases/download/v1.0.0/cursor-installer_1.0.0_all.deb
    ```
 
 2. **Install the package:**
@@ -33,24 +55,37 @@ You can install this installer script as a proper application in Ubuntu using se
    ```
 
 3. **Launch from Applications menu** or terminal:
-   - GUI: `cursor-installer-gui` or launch from Applications menu
-   - CLI: `cursor-installer`
-
-### Method 2: Install as Snap Package
-
-1. **Build the snap package:**
-
    ```bash
-   snapcraft build
+   cursor-installer
    ```
 
-2. **Install the snap:**
+### Method 2: Build from Source
+
+1. **Clone the repository:**
 
    ```bash
-   sudo snap install cursor-installer_1.0.0_amd64.snap --dangerous
+   git clone https://github.com/JameelShaikh32/cursor-installer.git
+   cd cursor-installer
    ```
 
-3. **Launch:** `cursor-installer`
+2. **Build the .deb packages:**
+
+   ```bash
+   # Build GUI package
+   chmod +x create_gui_deb_package.sh
+   ./create_gui_deb_package.sh
+
+   # Build CLI package
+   chmod +x create_deb_package.sh
+   ./create_deb_package.sh
+   ```
+
+3. **Install the packages:**
+   ```bash
+   sudo dpkg -i cursor-installer-gui_1.0.0_all.deb
+   sudo dpkg -i cursor-installer_1.0.0_all.deb
+   sudo apt-get install -f
+   ```
 
 ### Method 3: Manual Installation
 
@@ -91,6 +126,7 @@ The installer now includes a modern graphical user interface with the following 
 - **Dependency Checker** - Verify system requirements
 - **Modern Design** - GNOME-inspired interface
 - **Error Handling** - User-friendly error messages
+- **Custom Icon** - Dedicated GUI-specific icon
 
 ### Running the GUI
 
@@ -121,20 +157,62 @@ cursor-installer-gui
 
 ### Step 1: Download the Installer
 
-Clone or download the repository to your local machine:
+Choose your preferred method:
+
+#### Option A: Download Pre-built .deb Packages (Recommended)
 
 ```bash
-git clone <repository-url>
+# GUI Version (Recommended for beginners)
+wget https://github.com/JameelShaikh32/cursor-installer/releases/download/v1.0.0/cursor-installer-gui_1.0.0_all.deb
+
+# CLI Version (For advanced users)
+wget https://github.com/JameelShaikh32/cursor-installer/releases/download/v1.0.0/cursor-installer_1.0.0_all.deb
+```
+
+#### Option B: Clone Repository
+
+```bash
+git clone https://github.com/JameelShaikh32/cursor-installer.git
 cd cursor-installer
 ```
 
-### Step 2: Download Cursor AppImage
+### Step 2: Install the Installer
+
+#### For .deb Packages:
+
+```bash
+# Install GUI version
+sudo dpkg -i cursor-installer-gui_1.0.0_all.deb
+sudo apt-get install -f
+
+# Install CLI version (optional)
+sudo dpkg -i cursor-installer_1.0.0_all.deb
+sudo apt-get install -f
+```
+
+#### For Source Installation:
+
+```bash
+# Make scripts executable
+chmod +x cursor_installer.sh cursor_installer_gui.py
+
+# Copy to system path
+sudo cp cursor_installer.sh /usr/local/bin/cursor-installer
+sudo cp cursor_installer_gui.py /usr/local/bin/cursor-installer-gui
+
+# Create desktop shortcuts
+sudo cp cursor-installer.desktop /usr/share/applications/
+sudo cp cursor-installer-gui.desktop /usr/share/applications/
+sudo update-desktop-database
+```
+
+### Step 3: Download Cursor AppImage
 
 1. Visit [cursor.com](https://www.cursor.com/)
 2. Download the Linux AppImage file for Cursor
 3. The file will typically be named `Cursor-*-x86_64.AppImage`
 
-### Step 3: Run the Installer
+### Step 4: Run the Installer
 
 #### Option A: GUI Installation (Recommended for beginners)
 
@@ -147,15 +225,15 @@ Then follow the on-screen instructions to select your AppImage file.
 #### Option B: Command-line Installation
 
 ```bash
-chmod +x cursor_installer.sh
-./cursor_installer.sh
+cursor-installer
 ```
 
-3. When prompted, enter the path to your Cursor AppImage file:
-   - If the file is in your Downloads folder, just press Enter
-   - Otherwise, provide the full path to the directory containing the AppImage file
+When prompted, enter the path to your Cursor AppImage file:
 
-### Step 4: Launch Cursor
+- If the file is in your Downloads folder, just press Enter
+- Otherwise, provide the full path to the directory containing the AppImage file
+
+### Step 5: Launch Cursor
 
 After installation, you can launch Cursor from:
 
@@ -182,6 +260,8 @@ The installer script performs the following operations:
 - **Installed application**: System-wide installation via `dpkg`
 - **GUI application**: `/usr/local/bin/cursor-installer-gui`
 - **CLI script**: `/usr/local/bin/cursor-installer`
+- **GUI icon**: `/usr/share/icons/hicolor/128x128/apps/cursor-installer-gui.png`
+- **CLI icon**: `/usr/share/icons/hicolor/128x128/apps/cursor-installer.png`
 
 ## 🐛 Troubleshooting
 
@@ -215,8 +295,14 @@ The installer script performs the following operations:
    - Ensure Python 3.8+ is installed: `python3 --version`
 
 6. **Existing Cursor installation conflicts**
+
    - The script only removes packages installed via `dpkg`
    - If you have Cursor installed via other methods (snap, flatpak, manual installation), you may need to remove it manually first
+
+7. **Icon not displaying**
+   - Refresh desktop: `gtk-update-icon-cache`
+   - Restart your desktop environment
+   - Check icon file permissions
 
 ### Manual Installation
 
@@ -246,6 +332,16 @@ To remove Cursor from your system (if installed via this script):
 sudo apt remove cursor-*-*-*-x86-64
 ```
 
+To remove the installer packages:
+
+```bash
+# Remove GUI installer
+sudo apt remove cursor-installer-gui
+
+# Remove CLI installer
+sudo apt remove cursor-installer
+```
+
 **Note**: This only works for packages installed via `dpkg`. If Cursor was installed through other methods, you'll need to use the appropriate uninstallation method for that package manager.
 
 ## 📝 Notes
@@ -256,6 +352,8 @@ sudo apt remove cursor-*-*-*-x86-64
 - The installer supports custom AppImage file locations
 - Both CLI and GUI versions are included in the package
 - The GUI provides a more user-friendly experience for beginners
+- Each version has its own dedicated icon for easy identification
+- The installer creates proper desktop integration with custom icons
 
 ## 🤝 Contributing
 

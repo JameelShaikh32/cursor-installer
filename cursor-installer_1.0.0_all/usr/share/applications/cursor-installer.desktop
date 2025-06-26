@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Cursor Installer
+Comment=Install Cursor AI Editor on Ubuntu
+Exec=cursor-installer
+Icon=cursor-installer
+Terminal=true
+Categories=Development;IDE;
+Keywords=cursor;editor;installer;ai;

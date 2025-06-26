@@ -1,0 +1,18 @@
+Package: cursor-installer
+Version: 1.0.0
+Architecture: all
+Maintainer: Jameel Shaikh <shaikhjameel17@gmail.com>
+Depends: bash, snapd, libfuse2
+Priority: optional
+Section: devel
+Description: Cursor AI Editor installer for Ubuntu (versions < 24)
+ This package provides an automated installer for Cursor AI Editor
+ on Ubuntu systems (versions lower than 24). It converts the
+ Cursor AppImage to a proper .deb package and installs it
+ system-wide.
+ .
+ Features:
+  * Automatic AppImage to DEB conversion
+  * Dependency management
+  * Clean installation process
+  * Automatic cleanup

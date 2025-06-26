@@ -6,7 +6,7 @@
 PACKAGE_NAME="cursor-installer"
 VERSION="1.0.0"
 ARCH="all"
-MAINTAINER="Your Name <your.email@example.com>"
+MAINTAINER="Jameel Shaikh <shaikhjameel17@gmail.com>"
 DESCRIPTION="Cursor AI Editor installer for Ubuntu (versions < 24)"
 
 # Create package structure
@@ -20,6 +20,17 @@ mkdir -p "${PACKAGE_DIR}/usr/share/icons/hicolor/128x128/apps"
 # Copy the installer script
 cp cursor_installer.sh "${PACKAGE_DIR}/usr/local/bin/cursor-installer"
 chmod +x "${PACKAGE_DIR}/usr/local/bin/cursor-installer"
+
+# Copy CLI icon if available
+if [ -f "cursor-installer-cli.svg" ]; then
+    # Try to convert SVG to PNG if rsvg-convert is available
+    if command -v rsvg-convert &> /dev/null; then
+        rsvg-convert -w 128 -h 128 cursor-installer-cli.svg -o "${PACKAGE_DIR}/usr/share/icons/hicolor/128x128/apps/cursor-installer.png"
+    else
+        # Copy SVG as fallback
+        cp cursor-installer-cli.svg "${PACKAGE_DIR}/usr/share/icons/hicolor/128x128/apps/cursor-installer.svg"
+    fi
+fi
 
 # Create desktop entry
 cat > "${PACKAGE_DIR}/usr/share/applications/cursor-installer.desktop" << EOF
@@ -68,6 +79,9 @@ update-desktop-database /usr/share/applications
 # Make script executable
 chmod +x /usr/local/bin/cursor-installer
 
+# Create symlink for easier access
+ln -sf /usr/local/bin/cursor-installer /usr/bin/cursor-installer
+
 exit 0
 EOF
 chmod +x "${PACKAGE_DIR}/DEBIAN/postinst"
@@ -79,6 +93,9 @@ set -e
 
 # Update desktop database
 update-desktop-database /usr/share/applications
+
+# Remove symlink
+rm -f /usr/bin/cursor-installer
 
 exit 0
 EOF
@@ -95,7 +112,7 @@ Upstream-Name: cursor-installer
 Source: https://github.com/yourusername/cursor-installer
 
 Files: *
-Copyright: $(date +%Y) Your Name
+Copyright: $(date +%Y) Jameel Shaikh
 License: MIT
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -116,9 +133,27 @@ License: MIT
  SOFTWARE.
 EOF
 
+# Create changelog
+cat > "${PACKAGE_DIR}/usr/share/doc/${PACKAGE_NAME}/changelog.Debian" << EOF
+${PACKAGE_NAME} (${VERSION}) stable; urgency=medium
+
+  * Initial release (CLI only)
+  * Added CLI installer application
+  * Added desktop integration
+  * Added dependency management
+  * Added custom CLI icon
+
+ -- ${MAINTAINER}  $(date -R)
+EOF
+gzip -9 "${PACKAGE_DIR}/usr/share/doc/${PACKAGE_NAME}/changelog.Debian"
+
 # Build the .deb package
 dpkg-deb --build "${PACKAGE_DIR}"
 
 echo "Package created: ${PACKAGE_DIR}.deb"
 echo "To install: sudo dpkg -i ${PACKAGE_DIR}.deb"
 echo "To fix dependencies: sudo apt-get install -f"
+echo ""
+echo "After installation, you can run:"
+echo "  cursor-installer  # Command line version"
+echo "  # Or launch from Applications menu"

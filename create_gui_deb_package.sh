@@ -24,14 +24,17 @@ chmod +x "${PACKAGE_DIR}/usr/local/bin/cursor-installer-gui"
 # Copy GUI desktop entry
 cp cursor-installer-gui.desktop "${PACKAGE_DIR}/usr/share/applications/cursor-installer-gui.desktop"
 
-# Copy icon if available
-if [ -f "cursor-installer.svg" ]; then
+# Update the desktop file to use the correct icon (only the Icon line)
+sed -i 's/^Icon=cursor-installer$/Icon=cursor-installer-gui/' "${PACKAGE_DIR}/usr/share/applications/cursor-installer-gui.desktop"
+
+# Copy GUI icon if available
+if [ -f "cursor-installer-gui.svg" ]; then
     # Try to convert SVG to PNG if rsvg-convert is available
     if command -v rsvg-convert &> /dev/null; then
-        rsvg-convert -w 128 -h 128 cursor-installer.svg -o "${PACKAGE_DIR}/usr/share/icons/hicolor/128x128/apps/cursor-installer.png"
+        rsvg-convert -w 128 -h 128 cursor-installer-gui.svg -o "${PACKAGE_DIR}/usr/share/icons/hicolor/128x128/apps/cursor-installer-gui.png"
     else
         # Copy SVG as fallback
-        cp cursor-installer.svg "${PACKAGE_DIR}/usr/share/icons/hicolor/128x128/apps/cursor-installer.svg"
+        cp cursor-installer-gui.svg "${PACKAGE_DIR}/usr/share/icons/hicolor/128x128/apps/cursor-installer-gui.svg"
     fi
 fi
 
@@ -130,7 +133,7 @@ ${PACKAGE_NAME} (${VERSION}) stable; urgency=medium
   * Added GUI installer application
   * Added desktop integration
   * Added dependency management
-  * Added custom icon
+  * Added custom GUI-specific icon
 
  -- ${MAINTAINER}  $(date -R)
 EOF

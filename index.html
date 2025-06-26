@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cursor Installer - Ubuntu AI Editor Installer</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="cursor-installer.svg">
     <meta name="description"
-        content="Automated installer for Cursor AI Editor on Ubuntu. Convert AppImage to DEB and install system-wide.">
-    <meta name="keywords" content="cursor, installer, ubuntu, appimage, deb, ai editor, development">
+        content="Automated installer for Cursor AI Editor on Ubuntu. Convert AppImage to DEB and install system-wide with GUI or CLI.">
+    <meta name="keywords" content="cursor, installer, ubuntu, appimage, deb, ai editor, development, gui, cli">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -17,14 +18,14 @@
         <nav class="nav">
             <div class="nav-container">
                 <div class="nav-brand">
+                    <img src="cursor-installer.svg" alt="Cursor Installer" class="brand-icon">
                     <h1>Cursor Installer</h1>
                 </div>
                 <ul class="nav-menu">
                     <li><a href="#features">Features</a></li>
-                    <li><a href="#installation">Installation</a></li>
                     <li><a href="#download">Download</a></li>
-                    <li><a href="#documentation">Docs</a></li>
-                    <li><a href="https://github.com/yourusername/cursor-installer" target="_blank">GitHub</a></li>
+                    <li><a href="#installation">Installation</a></li>
+                    <li><a href="https://github.com/JameelShaikh32/cursor-installer" target="_blank">GitHub</a></li>
                 </ul>
             </div>
         </nav>
@@ -34,41 +35,73 @@
         <section class="hero">
             <div class="hero-container">
                 <div class="hero-content">
-                    <h1 class="hero-title">Cursor AI Editor Installer</h1>
-                    <p class="hero-subtitle">Automated installer for Cursor AI Editor on Ubuntu systems (versions lower
-                        than 24)</p>
+                    <div class="hero-badge">
+                        <span class="badge-text">🚀 New Release v1.0.0</span>
+                    </div>
+                    <h1 class="hero-title">Install Cursor AI Editor on Ubuntu</h1>
+                    <p class="hero-subtitle">Convert Cursor AppImage to DEB package and install system-wide with our
+                        automated installer. Available in both GUI and CLI versions with custom icons.</p>
                     <div class="hero-buttons">
-                        <a href="#download" class="btn btn-primary">Download Now</a>
-                        <a href="#installation" class="btn btn-secondary">Quick Install</a>
+                        <a href="#download" class="btn btn-primary">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7,10 12,15 17,10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download Now
+                        </a>
+                        <a href="#installation" class="btn btn-secondary">View Installation Guide</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">2</span>
+                            <span class="stat-label">Installation Methods</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Automated</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">5min</span>
+                            <span class="stat-label">Setup Time</span>
+                        </div>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <div class="terminal-window">
-                        <div class="terminal-header">
-                            <div class="terminal-buttons">
-                                <span class="terminal-button close"></span>
-                                <span class="terminal-button minimize"></span>
-                                <span class="terminal-button maximize"></span>
+                <div class="hero-visual">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="window-buttons">
+                                <span class="window-button close"></span>
+                                <span class="window-button minimize"></span>
+                                <span class="window-button maximize"></span>
                             </div>
-                            <div class="terminal-title">cursor-installer</div>
+                            <div class="window-title">cursor-installer-gui</div>
                         </div>
-                        <div class="terminal-content">
-                            <div class="terminal-line">
-                                <span class="prompt">$</span>
-                                <span class="command">./cursor_installer.sh</span>
+                        <div class="window-content">
+                            <div class="code-line">
+                                <span class="code-comment"># Installing dependencies...</span>
                             </div>
-                            <div class="terminal-line">
-                                <span class="output">Installing appimage2deb...</span>
+                            <div class="code-line">
+                                <span class="code-keyword">✓</span> <span class="code-text">libfuse2 installed</span>
                             </div>
-                            <div class="terminal-line">
-                                <span class="output">Converting AppImage to deb package...</span>
+                            <div class="code-line">
+                                <span class="code-keyword">✓</span> <span class="code-text">appimage2deb
+                                    installed</span>
                             </div>
-                            <div class="terminal-line">
-                                <span class="output success">✓ Cursor installation completed!</span>
+                            <div class="code-line">
+                                <span class="code-comment"># Converting AppImage to DEB...</span>
                             </div>
-                            <div class="terminal-line">
-                                <span class="prompt">$</span>
-                                <span class="command">cursor</span>
+                            <div class="code-line">
+                                <span class="code-keyword">✓</span> <span class="code-text">Cursor-1.0.0-x86_64.AppImage
+                                    → cursor.deb</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-comment"># Installing Cursor...</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-keyword">✓</span> <span class="code-text success">Cursor installed
+                                    successfully!</span>
                             </div>
                         </div>
                     </div>
@@ -78,88 +111,76 @@
 
         <section id="features" class="features">
             <div class="container">
-                <h2 class="section-title">Features</h2>
+                <div class="section-header">
+                    <h2 class="section-title">Why Choose Cursor Installer?</h2>
+                    <p class="section-subtitle">Streamlined installation process for Cursor AI Editor on Ubuntu systems
+                    </p>
+                </div>
                 <div class="features-grid">
                     <div class="feature-card">
-                        <div class="feature-icon">🔄</div>
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                        </div>
+                        <h3>Dual Interface</h3>
+                        <p>Choose between intuitive GUI or powerful CLI - both provide the same reliable installation
+                            experience with custom icons for easy identification.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="7,10 12,15 17,10" />
+                                <line x1="12" y1="15" x2="12" y2="3" />
+                            </svg>
+                        </div>
                         <h3>Automatic Conversion</h3>
-                        <p>Converts Cursor AppImage to proper .deb package using appimage2deb</p>
+                        <p>Seamlessly converts Cursor AppImage to proper DEB package using appimage2deb technology.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">📦</div>
-                        <h3>Dependency Management</h3>
-                        <p>Automatically installs required packages (libfuse2, appimage2deb)</p>
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                            </svg>
+                        </div>
+                        <h3>Smart Dependencies</h3>
+                        <p>Automatically detects and installs required packages (libfuse2, appimage2deb) without manual
+                            intervention.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🧹</div>
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 6h18" />
+                                <path
+                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                            </svg>
+                        </div>
                         <h3>Clean Installation</h3>
-                        <p>Removes existing Cursor packages installed via dpkg before installation</p>
+                        <p>Removes existing Cursor packages and cleans up temporary files for a pristine installation.
+                        </p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🗑️</div>
-                        <h3>Automatic Cleanup</h3>
-                        <p>Removes temporary files after successful installation</p>
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 12l2 2 4-4" />
+                                <path d="M21 12c-1 0-2-1-2-2s1-2 2-2 2 1 2 2-1 2-2 2z" />
+                                <path d="M3 12c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2z" />
+                            </svg>
+                        </div>
+                        <h3>Progress Tracking</h3>
+                        <p>Real-time progress indicators and status updates keep you informed throughout the
+                            installation process.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">💻</div>
-                        <h3>User-Friendly</h3>
-                        <p>Interactive prompts with smart defaults for AppImage location</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">⚡</div>
-                        <h3>Fast & Efficient</h3>
-                        <p>Optimized for Ubuntu systems with minimal dependencies</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="installation" class="installation">
-            <div class="container">
-                <h2 class="section-title">Installation</h2>
-                <div class="installation-steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Download the Installer</h3>
-                            <p>Clone or download the repository to your local machine</p>
-                            <div class="code-block">
-                                <code>git clone https://github.com/yourusername/cursor-installer.git<br>
-cd cursor-installer</code>
-                            </div>
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                            </svg>
                         </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Download Cursor AppImage</h3>
-                            <p>Visit cursor.com and download the Linux AppImage file</p>
-                            <div class="code-block">
-                                <code># Download from https://www.cursor.com/<br>
-# File: Cursor-*-x86_64.AppImage</code>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3>Run the Installer</h3>
-                            <p>Make executable and run the installer script</p>
-                            <div class="code-block">
-                                <code>chmod +x cursor_installer.sh<br>
-./cursor_installer.sh</code>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h3>Launch Cursor</h3>
-                            <p>Start Cursor from Applications menu or terminal</p>
-                            <div class="code-block">
-                                <code>cursor</code>
-                            </div>
-                        </div>
+                        <h3>Lightning Fast</h3>
+                        <p>Optimized for Ubuntu systems with minimal dependencies and efficient package management.</p>
                     </div>
                 </div>
             </div>
@@ -167,53 +188,248 @@ cd cursor-installer</code>
 
         <section id="download" class="download">
             <div class="container">
-                <h2 class="section-title">Download</h2>
-                <div class="download-options">
-                    <div class="download-card">
-                        <h3>GitHub Repository</h3>
-                        <p>Get the latest source code and contribute to the project</p>
-                        <a href="https://github.com/yourusername/cursor-installer" class="btn btn-primary"
-                            target="_blank">
-                            View on GitHub
-                        </a>
+                <div class="section-header">
+                    <h2 class="section-title">Download Cursor Installer</h2>
+                    <p class="section-subtitle">Choose your preferred installation method</p>
+                </div>
+                <div class="download-grid">
+                    <div class="download-card gui">
+                        <div class="download-header">
+                            <div class="download-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                                    <line x1="9" y1="9" x2="15" y2="9" />
+                                    <line x1="9" y1="12" x2="15" y2="12" />
+                                    <line x1="9" y1="15" x2="15" y2="15" />
+                                </svg>
+                            </div>
+                            <div class="download-badge">Recommended</div>
+                        </div>
+                        <h3>GUI Version</h3>
+                        <p>User-friendly graphical interface with progress bars and visual feedback. Perfect for
+                            beginners and those who prefer point-and-click installation.</p>
+                        <ul class="download-features">
+                            <li>✓ Visual progress tracking</li>
+                            <li>✓ File browser integration</li>
+                            <li>✓ Status notifications</li>
+                            <li>✓ Error handling with dialogs</li>
+                        </ul>
+                        <div class="download-actions">
+                            <a href="cursor_installer_gui.py" class="btn btn-primary" download>
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="7,10 12,15 17,10" />
+                                    <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                                Download GUI (.py)
+                            </a>
+                            <a href="cursor-installer-gui_1.0.0_all.deb" class="btn btn-secondary" download>
+                                Download DEB Package
+                            </a>
+                        </div>
                     </div>
-                    <div class="download-card">
-                        <h3>Snap Store</h3>
-                        <p>Install directly from Ubuntu Snap Store (coming soon)</p>
-                        <a href="#" class="btn btn-secondary" disabled>
-                            Install via Snap
-                        </a>
+
+                    <div class="download-card cli">
+                        <div class="download-header">
+                            <div class="download-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="4,7 4,4 20,4 20,7" />
+                                    <line x1="9" y1="20" x2="15" y2="20" />
+                                    <line x1="12" y1="4" x2="12" y2="20" />
+                                </svg>
+                            </div>
+                            <div class="download-badge">Advanced</div>
+                        </div>
+                        <h3>CLI Version</h3>
+                        <p>Command-line interface for automated installations and scripting. Ideal for power users,
+                            system administrators, and automation workflows.</p>
+                        <ul class="download-features">
+                            <li>✓ Terminal-based interface</li>
+                            <li>✓ Scriptable installation</li>
+                            <li>✓ Minimal resource usage</li>
+                            <li>✓ SSH-friendly</li>
+                        </ul>
+                        <div class="download-actions">
+                            <a href="cursor_installer.sh" class="btn btn-primary" download>
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="7,10 12,15 17,10" />
+                                    <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                                Download CLI (.sh)
+                            </a>
+                            <a href="cursor-installer_1.0.0_all.deb" class="btn btn-secondary" download>
+                                Download DEB Package
+                            </a>
+                        </div>
                     </div>
-                    <div class="download-card">
-                        <h3>Direct Download</h3>
-                        <p>Download the installer script directly</p>
-                        <a href="cursor_installer.sh" class="btn btn-primary" download>
-                            Download Script
-                        </a>
+                </div>
+
+                <div class="download-info">
+                    <div class="info-card">
+                        <h4>System Requirements</h4>
+                        <ul>
+                            <li>Ubuntu 18.04+ (versions lower than 24)</li>
+                            <li>Python 3.8+ (for GUI version)</li>
+                            <li>Internet connection for dependencies</li>
+                            <li>sudo privileges for installation</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h4>What's Included</h4>
+                        <ul>
+                            <li>Automatic dependency installation</li>
+                            <li>AppImage to DEB conversion</li>
+                            <li>System-wide Cursor installation</li>
+                            <li>Desktop menu integration</li>
+                            <li>Custom icons for CLI and GUI versions</li>
+                            <li>Proper package management</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="documentation" class="documentation">
+        <section id="installation" class="installation">
             <div class="container">
-                <h2 class="section-title">Documentation</h2>
-                <div class="docs-grid">
-                    <div class="doc-card">
-                        <h3>README</h3>
-                        <p>Complete installation guide and troubleshooting</p>
-                        <a href="README.md" class="doc-link">View README →</a>
+                <div class="section-header">
+                    <h2 class="section-title">Installation Guide</h2>
+                    <p class="section-subtitle">Get Cursor running on your Ubuntu system in minutes</p>
+                </div>
+
+                <div class="installation-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" data-tab="gui">GUI Installation</button>
+                        <button class="tab-button" data-tab="cli">CLI Installation</button>
                     </div>
-                    <div class="doc-card">
-                        <h3>Snap Store Guide</h3>
-                        <p>How to publish to Ubuntu Snap Store</p>
-                        <a href="SNAP_STORE_GUIDE.md" class="doc-link">View Guide →</a>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="gui-tab">
+                            <div class="installation-steps">
+                                <div class="step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h3>Download the GUI Installer</h3>
+                                        <p>Download the GUI .deb package (recommended) or Python file</p>
+                                        <div class="code-block">
+                                            <code># Option A: Download .deb package (Recommended)<br>wget https://github.com/JameelShaikh32/cursor-installer/releases/download/v1.0.0/cursor-installer-gui_1.0.0_all.deb<br><br># Option B: Download Python file<br>wget https://github.com/JameelShaikh32/cursor-installer/raw/main/cursor_installer_gui.py</code>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h3>Install the GUI Installer</h3>
+                                        <p>Install the .deb package or make the Python file executable</p>
+                                        <div class="code-block">
+                                            <code># Option A: Install .deb package<br>sudo dpkg -i cursor-installer-gui_1.0.0_all.deb<br>sudo apt-get install -f<br><br># Option B: Make Python file executable<br>chmod +x cursor_installer_gui.py</code>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h3>Download Cursor AppImage</h3>
+                                        <p>Visit cursor.com and download the Linux AppImage file</p>
+                                        <div class="code-block">
+                                            <code># Download from https://www.cursor.com/<br># File: Cursor-*-x86_64.AppImage</code>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <h3>Run the GUI Installer</h3>
+                                        <p>Launch the graphical installer and follow the prompts</p>
+                                        <div class="code-block">
+                                            <code># If installed via .deb package<br>cursor-installer-gui<br><br># If using Python file<br>./cursor_installer_gui.py</code>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">5</div>
+                                    <div class="step-content">
+                                        <h3>Launch Cursor</h3>
+                                        <p>Start Cursor from Applications menu or terminal</p>
+                                        <div class="code-block">
+                                            <code>cursor</code>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="cli-tab">
+                            <div class="installation-steps">
+                                <div class="step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h3>Download the CLI Installer</h3>
+                                        <p>Download the CLI .deb package (recommended) or shell script</p>
+                                        <div class="code-block">
+                                            <code># Option A: Download .deb package (Recommended)<br>wget https://github.com/JameelShaikh32/cursor-installer/releases/download/v1.0.0/cursor-installer_1.0.0_all.deb<br><br># Option B: Download shell script<br>wget https://github.com/JameelShaikh32/cursor-installer/raw/main/cursor_installer.sh</code>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h3>Install the CLI Installer</h3>
+                                        <p>Install the .deb package or make the shell script executable</p>
+                                        <div class="code-block">
+                                            <code># Option A: Install .deb package<br>sudo dpkg -i cursor-installer_1.0.0_all.deb<br>sudo apt-get install -f<br><br># Option B: Make shell script executable<br>chmod +x cursor_installer.sh</code>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h3>Download Cursor AppImage</h3>
+                                        <p>Visit cursor.com and download the Linux AppImage file</p>
+                                        <div class="code-block">
+                                            <code># Download from https://www.cursor.com/<br># File: Cursor-*-x86_64.AppImage</code>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <h3>Run the CLI Installer</h3>
+                                        <p>Execute the installer script and follow the prompts</p>
+                                        <div class="code-block">
+                                            <code># If installed via .deb package<br>cursor-installer<br><br># If using shell script<br>./cursor_installer.sh</code>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">5</div>
+                                    <div class="step-content">
+                                        <h3>Launch Cursor</h3>
+                                        <p>Start Cursor from Applications menu or terminal</p>
+                                        <div class="code-block">
+                                            <code>cursor</code>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="doc-card">
-                        <h3>GitHub Issues</h3>
-                        <p>Report bugs and request features</p>
-                        <a href="https://github.com/yourusername/cursor-installer/issues" class="doc-link"
-                            target="_blank">View Issues →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Install Cursor?</h2>
+                    <p>Join thousands of developers who have successfully installed Cursor on Ubuntu using our
+                        installer.</p>
+                    <div class="cta-buttons">
+                        <a href="#download" class="btn btn-primary">Download Now</a>
+                        <a href="https://github.com/JameelShaikh32/cursor-installer" class="btn btn-secondary"
+                            target="_blank">View on GitHub</a>
                     </div>
                 </div>
             </div>
@@ -225,32 +441,56 @@ cd cursor-installer</code>
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Cursor Installer</h3>
-                    <p>Making Cursor AI Editor installation easy on Ubuntu</p>
+                    <p>Automated installer for Cursor AI Editor on Ubuntu systems. Convert AppImage to DEB and install
+                        system-wide.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Links</h4>
                     <ul>
-                        <li><a href="https://cursor.com" target="_blank">Cursor AI Editor</a></li>
+                        <li><a href="https://github.com/JameelShaikh32/cursor-installer" target="_blank">GitHub
+                                Repository</a></li>
+                        <li><a href="https://www.cursor.com" target="_blank">Cursor AI Editor</a></li>
                         <li><a href="https://ubuntu.com" target="_blank">Ubuntu</a></li>
-                        <li><a href="https://snapcraft.io" target="_blank">Snap Store</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Project</h4>
+                    <h4>Resources</h4>
                     <ul>
-                        <li><a href="https://github.com/yourusername/cursor-installer" target="_blank">GitHub</a></li>
-                        <li><a href="https://github.com/yourusername/cursor-installer/issues" target="_blank">Issues</a>
-                        </li>
-                        <li><a href="https://github.com/yourusername/cursor-installer/blob/main/LICENSE"
-                                target="_blank">License</a></li>
+                        <li><a href="#installation">Installation Guide</a></li>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="https://github.com/JameelShaikh32/cursor-installer/issues" target="_blank">Report
+                                Issues</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Cursor Installer. MIT License.</p>
+                <p>&copy; 2024 Cursor Installer. Created by <a href="https://github.com/JameelShaikh32"
+                        target="_blank">Jameel Shaikh</a>. MIT License.</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetTab = button.getAttribute('data-tab');
+
+                    // Remove active class from all buttons and panes
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabPanes.forEach(pane => pane.classList.remove('active'));
+
+                    // Add active class to clicked button and corresponding pane
+                    button.classList.add('active');
+                    document.getElementById(targetTab + '-tab').classList.add('active');
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
