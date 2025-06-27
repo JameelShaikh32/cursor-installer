@@ -53,7 +53,7 @@ Package: ${PACKAGE_NAME}
 Version: ${VERSION}
 Architecture: ${ARCH}
 Maintainer: ${MAINTAINER}
-Depends: bash, snapd, libfuse2, appimage2deb
+Depends: bash, snapd, libfuse2
 Priority: optional
 Section: devel
 Homepage: ${WEBSITE}

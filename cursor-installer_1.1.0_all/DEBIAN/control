@@ -2,7 +2,7 @@ Package: cursor-installer
 Version: 1.1.0
 Architecture: all
 Maintainer: Jameel Shaikh <shaikhjameel17@gmail.com>
-Depends: bash, snapd, libfuse2, appimage2deb
+Depends: bash, snapd, libfuse2
 Priority: optional
 Section: devel
 Homepage: https://jameelshaikh32.github.io/cursor-installer/
