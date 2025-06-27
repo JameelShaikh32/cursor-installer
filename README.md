@@ -1,17 +1,39 @@
 # Cursor AI Editor Installer for Ubuntu
 
-A simple and automated installer script for Cursor AI Editor on Ubuntu systems (versions lower than v24). This script converts the Cursor AppImage file to a proper `.deb` package and installs it system-wide.
+**Author:** Jameel Shaikh  
+**Portfolio:** https://jameelshaikh32.github.io/profile
+
+A simple and automated installer script for Cursor AI Editor on Ubuntu systems. This script now supports both traditional DEB installation (for Ubuntu 22 and below) and AppImage desktop entry (for Ubuntu 24 and above).
 
 ## 🚀 Features
 
-- **Automatic AppImage to DEB conversion** using `appimage2deb`
+- **Automatic AppImage to DEB conversion** using `appimage2deb` (Ubuntu 22 and below)
+- **AppImage Desktop Entry for Ubuntu 24+** – No DEB conversion required, just one-click launch from your menu
 - **Dependency management** - automatically installs required packages
 - **Clean installation** - removes any existing Cursor packages installed via `dpkg` before installation
 - **Automatic cleanup** - removes temporary files after installation
 - **User-friendly** - prompts for AppImage file location with smart defaults
+- **Progress Spinner** - see a running indicator while converting AppImage to DEB
 - **Graphical Interface** - modern GUI application with progress tracking
 - **Command-line Interface** - script-based installation for automation
 - **Custom Icons** - dedicated icons for CLI and GUI versions
+
+## 🆕 Ubuntu 24+ Support
+
+> **Note:** Ubuntu 24 and above do not support DEB installation for Cursor. The script will automatically detect your Ubuntu version and:
+>
+> - **For Ubuntu 24 or greater:**
+>   - Prompts for your Cursor AppImage file location
+>   - Makes the AppImage executable
+>   - Creates a desktop entry (shortcut) in your applications menu using the included icon
+>   - You can launch Cursor directly from your menu, no DEB required!
+
+**Command used:**
+
+```bash
+chmod +x Cursor-*.*.*-x86_64.AppImage
+./Cursor-<version>-x86_64.AppImage --no-sandbox
+```
 
 ## 📦 Installing the Installer
 
