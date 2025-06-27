@@ -4,10 +4,11 @@
 # This script creates a proper .deb package that can be installed via apt
 
 PACKAGE_NAME="cursor-installer"
-VERSION="1.0.0"
+VERSION="1.1.0"
 ARCH="all"
 MAINTAINER="Jameel Shaikh <shaikhjameel17@gmail.com>"
-DESCRIPTION="Cursor AI Editor installer for Ubuntu (versions < 24)"
+DESCRIPTION="Cursor AI Editor installer for Ubuntu"
+WEBSITE="https://jameelshaikh32.github.io/cursor-installer/"
 
 # Create package structure
 PACKAGE_DIR="${PACKAGE_NAME}_${VERSION}_${ARCH}"
@@ -35,7 +36,7 @@ fi
 # Create desktop entry
 cat > "${PACKAGE_DIR}/usr/share/applications/cursor-installer.desktop" << EOF
 [Desktop Entry]
-Version=1.0
+Version=1.1.0
 Type=Application
 Name=Cursor Installer
 Comment=Install Cursor AI Editor on Ubuntu
@@ -52,20 +53,27 @@ Package: ${PACKAGE_NAME}
 Version: ${VERSION}
 Architecture: ${ARCH}
 Maintainer: ${MAINTAINER}
-Depends: bash, snapd, libfuse2
+Depends: bash, snapd, libfuse2, appimage2deb
 Priority: optional
 Section: devel
+Homepage: ${WEBSITE}
 Description: ${DESCRIPTION}
  This package provides an automated installer for Cursor AI Editor
- on Ubuntu systems (versions lower than 24). It converts the
+ on Ubuntu systems. It converts the
  Cursor AppImage to a proper .deb package and installs it
- system-wide.
+ system-wide for Ubuntu 22.04 and below. For Ubuntu 24.04 and above, it uses the AppImage desktop entry method.
  .
  Features:
-  * Automatic AppImage to DEB conversion
-  * Dependency management
+  * Automatic AppImage to DEB conversion for Ubuntu 22.04 and below
+  * Automatic AppImage desktop entry method for Ubuntu 24.04 and above
+  * Dependency management (libfuse2, appimage2deb)
   * Clean installation process
-  * Automatic cleanup
+  * Automatic cleanup of temporary files
+  * Progress tracking with spinner
+  * Smart Ubuntu version detection
+  * Desktop menu integration
+ .
+ Visit ${WEBSITE} for more information and documentation.
 EOF
 
 # Create postinst script
@@ -109,7 +117,8 @@ gzip -9 "${PACKAGE_DIR}/usr/share/doc/${PACKAGE_NAME}/README.md"
 cat > "${PACKAGE_DIR}/usr/share/doc/${PACKAGE_NAME}/copyright" << EOF
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: cursor-installer
-Source: https://github.com/yourusername/cursor-installer
+Source: https://github.com/JameelShaikh32/cursor-installer
+Homepage: ${WEBSITE}
 
 Files: *
 Copyright: $(date +%Y) Jameel Shaikh
@@ -137,6 +146,25 @@ EOF
 cat > "${PACKAGE_DIR}/usr/share/doc/${PACKAGE_NAME}/changelog.Debian" << EOF
 ${PACKAGE_NAME} (${VERSION}) stable; urgency=medium
 
+  * New Features:
+    - Added Ubuntu 24+ support with AppImage desktop entry method
+    - Added progress spinner during AppImage conversion
+    - Enhanced error handling and user feedback
+    - Improved dependency management
+  * Technical Improvements:
+    - Smart Ubuntu version detection
+    - Better desktop integration
+    - Enhanced cleanup process
+    - Updated project website integration
+  * Documentation:
+    - Added comprehensive README with installation guides
+    - Updated website with dark theme and screenshots
+    - Added release notes and changelog
+
+ -- ${MAINTAINER}  $(date -R)
+
+${PACKAGE_NAME} (1.0.0) stable; urgency=medium
+
   * Initial release (CLI only)
   * Added CLI installer application
   * Added desktop integration
@@ -157,3 +185,5 @@ echo ""
 echo "After installation, you can run:"
 echo "  cursor-installer  # Command line version"
 echo "  # Or launch from Applications menu"
+echo ""
+echo "Project website: ${WEBSITE}"
