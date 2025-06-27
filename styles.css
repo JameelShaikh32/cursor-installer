@@ -112,6 +112,15 @@ p {
   color: var(--text-secondary);
 }
 
+a {
+  color: var(--text-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--text-primary);
+}
+
 /* Container */
 .container {
   max-width: 1200px;
